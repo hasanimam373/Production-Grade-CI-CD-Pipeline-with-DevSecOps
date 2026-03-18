@@ -1,95 +1,164 @@
-🚀 Production-Grade CI/CD Pipeline with DevSecOps
+# 🚀 Production-Grade CI/CD Pipeline with DevSecOps
 
-This project demonstrates an end-to-end production-like CI/CD pipeline implementing DevOps and DevSecOps best practices. It automates the complete software delivery lifecycle, from code integration and testing to secure deployment on a Kubernetes cluster.
+![CI/CD](https://img.shields.io/badge/CI-CD%20Pipeline-blue)
+![DevOps](https://img.shields.io/badge/DevOps-Automation-green)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5)
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
+![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED)
 
-🔧 Tech Stack
+---
 
-Git & GitHub
+## 📌 Overview
 
-Jenkins (CI)
+This project demonstrates an end-to-end **production-grade CI/CD pipeline** implementing DevOps and DevSecOps best practices. It automates the complete software delivery lifecycle — from code integration and testing to secure deployment on a Kubernetes cluster.
 
-Maven & JUnit
+---
 
-SonarQube (Code Quality)
+## 🏗️ Architecture
 
-JFrog Artifactory (Artifact Management)
+```
+Developer → GitHub → Jenkins (CI) → Build & Test → SonarQube → Artifactory  
+→ Docker Build → Trivy Scan → Docker Registry → Kubernetes (EKS) → ArgoCD (CD)  
+→ Monitoring (Prometheus + Grafana) → Alerts (Slack)
+```
 
-Docker (Containerization)
+---
 
-Trivy (Security Scanning)
+## 🔧 Tech Stack
 
-AWS (S3, EKS)
+| Category           | Tools Used          |
+| ------------------ | ------------------- |
+| Version Control    | Git, GitHub         |
+| CI/CD              | Jenkins, ArgoCD     |
+| Build & Testing    | Maven, JUnit        |
+| Code Quality       | SonarQube           |
+| Artifact Storage   | JFrog Artifactory   |
+| Containerization   | Docker              |
+| Security           | Trivy               |
+| Cloud              | AWS (S3, EKS)       |
+| Orchestration      | Kubernetes          |
+| Monitoring         | Prometheus, Grafana |
+| Notifications      | Slack               |
+| Secrets Management | HashiCorp Vault     |
 
-Kubernetes (Orchestration)
+---
 
-ArgoCD (CD / GitOps)
+## ⚙️ Pipeline Workflow
 
-Prometheus & Grafana (Monitoring)
+### 🔹 1. Code Integration
 
-Slack (Notifications)
+* Code is pushed to GitHub
+* Webhook triggers Jenkins pipeline
 
-HashiCorp Vault (Secrets Management)
+### 🔹 2. Build & Test
 
-⚙️ Pipeline Overview
+* Maven builds the project
+* JUnit executes unit tests
 
-The pipeline is triggered automatically on every code commit and performs the following steps:
+### 🔹 3. Code Quality Analysis
 
-Code Integration
+* SonarQube scans for bugs, vulnerabilities, and code quality issues
 
-Source code is fetched and built using Maven
+### 🔹 4. Artifact Management
 
-Testing
+* Build artifacts are stored in Artifactory
 
-Unit tests executed using JUnit
+### 🔹 5. Containerization
 
-Code Quality Analysis
+* Application is packaged into a Docker image
 
-SonarQube checks for bugs, vulnerabilities, and code quality
+### 🔹 6. Security Scanning
 
-Artifact Storage
+* Trivy scans Docker images for vulnerabilities
 
-Build artifacts are stored in Artifactory
+### 🔹 7. Image Registry
 
-Containerization
+* Secure image is pushed to container registry
 
-Application is packaged into a Docker image
+### 🔹 8. Deployment Update
 
-Security Scanning
+* Kubernetes manifests updated with latest image version
 
-Docker image is scanned for vulnerabilities using Trivy
+### 🔹 9. Continuous Deployment
 
-Image Registry
+* ArgoCD deploys application to Kubernetes (AWS EKS)
 
-Secure image pushed to container registry
+### 🔹 10. Monitoring & Alerts
 
-Kubernetes Deployment Update
+* Prometheus collects metrics
+* Grafana visualizes performance
+* Slack sends notifications
 
-Deployment manifests updated with latest image version
+---
 
-Continuous Deployment
+## 🎯 Key Features
 
-ArgoCD deploys the application to Kubernetes (EKS)
+* ✅ Fully automated CI/CD pipeline
+* 🔐 Integrated DevSecOps practices
+* ⚡ GitOps-based deployment with ArgoCD
+* ☁️ Scalable deployment on AWS EKS
+* 📊 Real-time monitoring and alerting
+* 🔑 Secure secrets management
 
-Monitoring & Alerts
+---
 
-Prometheus and Grafana monitor system performance
+## 📂 Project Structure
 
-Notifications sent via Slack
+```
+project/
+ ├── app/                # Application source code
+ ├── Jenkinsfile         # CI pipeline definition
+ ├── k8s/                # Kubernetes manifests
+ ├── docker/             # Docker configurations
+ ├── monitoring/         # Prometheus & Grafana configs
+ └── README.md
+```
 
-🎯 Key Features
+---
 
-Fully automated CI/CD pipeline
+## 🚀 Getting Started
 
-Integrated DevSecOps practices
+### Prerequisites
 
-GitOps-based deployment using ArgoCD
+* AWS Account
+* Docker
+* Kubernetes Cluster (EKS or local)
+* Jenkins Setup
+* ArgoCD Installed
 
-Scalable deployment on Kubernetes (AWS EKS)
+### Steps
 
-Continuous monitoring and alerting
+```bash
+# Clone repository
+git clone <your-repo-url>
 
-Secure secrets management
+# Build Docker image
+docker build -t your-image .
 
-📌 Outcome
+# Push image to registry
+docker push your-image
 
-This project showcases a real-world DevOps workflow by automating build, test, security, and deployment processes, ensuring faster and more reliable software delivery.
+# Apply Kubernetes manifests
+kubectl apply -f k8s/
+
+# Access application
+kubectl get svc
+```
+
+---
+
+## 📊 Outcome
+
+This project demonstrates a real-world DevOps workflow by automating build, test, security, and deployment processes, ensuring faster, secure, and reliable software delivery.
+
+---
+
+## 🤝 Contribution
+
+Feel free to fork, improve, and contribute to this project.
+
+---
+
+## 📄 License
+
+This project is for educational and demonstration purposes.
